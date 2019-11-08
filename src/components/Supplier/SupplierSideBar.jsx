@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-export default class ContractorSidebar extends React.Component {
+export default class SupplierSidebar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,30 +17,23 @@ export default class ContractorSidebar extends React.Component {
         return (
           <ul className="sidebar navbar-nav">
           <li className="nav-item active">
-            <Link to="/contractor/addRequest" className="nav-link">
+            <Link to="/supplier/liveRequests" className="nav-link">
               <i className="fas fa-fw fa-table"></i>
-              <span>Add New Request</span>
+              <span>Live Request</span>
               </Link>
           </li>
 
           <li className="nav-item">
-            <Link to="/contractor/allRequests" className="nav-link">
+            <Link to="/supplier/awardedBids" className="nav-link">
               <i className="fas fa-fw fa-table"></i>
-              <span>All Requests</span>
+              <span>Awarded Bids</span>
               </Link>
           </li>
 
           <li className="nav-item">
-            <Link to="/contractor/pendingRequests" className="nav-link">
+            <Link to="/supplier/allBids" className="nav-link">
               <i className="fas fa-fw fa-table"></i>
-              <span>Pending Requests</span>
-              </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/contractor/completedRequests" className="nav-link">
-              <i className="fas fa-fw fa-table"></i>
-              <span>Completed Requests</span>
+              <span>All Bids</span>
               </Link>
           </li>
 

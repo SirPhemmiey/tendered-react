@@ -1,17 +1,4 @@
 import React from 'react';
-import bootstrap from '../../assets/css/bootstrap.min.css';
-//import fontAwesome from '../../assets/css/fontawesome.min.css';
-import fontAwesome from '../../assets/css/all.min.css';
-import dataTables from '../../assets/css/dataTables.bootstrap4.css'
-import sbAdmin from '../../assets/css/sb-admin.css';
-
-
-// require('../../assets/js/jquery.min');
-// require('../../assets/js/bootstrap.bundle.min');
-// require('../../assets/js/jquery.easing.min.min');
-// require('../../assets/js/jquery.dataTables');
-// require('../../assets/js/dataTables.bootstrap4');
-// require('../../assets/js/sb-admin');
 
 export default class Header extends React.Component {
     render() {
@@ -26,20 +13,9 @@ export default class Header extends React.Component {
 
           <title>SB Admin - Dashboard</title>
 
-          <link href={bootstrap} rel="stylesheet" type="text/css"/>
-
-          <link href={fontAwesome} rel="stylesheet" type="text/css" />
-
-
-          <link href={dataTables} rel="stylesheet" type="text/css"/>
-
-
-          <link href={sbAdmin} rel="stylesheet" type="text/css"/>
-
-
           <nav className="navbar navbar-expand navbar-dark bg-dark static-top">
 
-<a className="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+<a className="navbar-brand mr-1" href="index.html">Tendered Fullstack Challenge</a>
 
 <button className="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
   <i className="fas fa-bars"></i>

@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import Header from './Header';
+import Header from '../Header';
 import ContractorSideBar from './ContractorSideBar'
-import Footer from './Footer';
+import Footer from '../Footer';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
 

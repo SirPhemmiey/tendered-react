@@ -3,14 +3,14 @@ import React from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header';
-import ContractorSidebar from './ContractorSideBar'
+import SupplierSidebar from './SupplierSideBar'
 import Footer from '../Footer';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
 
 const API = "http://localhost:4001/api/v1";
 
-export default class Requests extends React.Component {
+export default class LiveRequests extends React.Component {
 
     constructor(props) {
         super(props);
@@ -32,7 +32,7 @@ export default class Requests extends React.Component {
     async getRequests() {
         const token = window.localStorage.getItem('token');
         try {
-            const requests = await axios.get(`${API}/contractor/allRequests`, {
+            const requests = await axios.get(`${API}/supplier/liveRequests`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ export default class Requests extends React.Component {
             <div>
                 <Header />
                 <div id="wrapper">
-                <ContractorSidebar />
+                <SupplierSidebar />
                 <div id="content-wrapper">
                <div className="container-fluid">
 
@@ -75,11 +75,11 @@ export default class Requests extends React.Component {
             <div className="card-header">
 
               <i className="fas fa-table"></i>
-                &nbsp; All Requests</div>
+                &nbsp; Live Requests</div>
                 
             <div className="card-body">
             <div class="table-responsive">
-           <p> <i className="fas fa-info"></i>&nbsp; You can click on the request to see the bidders</p>
+           <p> <i className="fas fa-info"></i>&nbsp; You can click on the request to bid for it</p>
             <Dots animating={this.state.loading}/>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -93,7 +93,6 @@ export default class Requests extends React.Component {
                       <th>Status</th>
                       <th>Post Date</th>
                       <th>Timeline</th>
-                      {/* <th>Action</th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -101,15 +100,14 @@ export default class Requests extends React.Component {
                        return (
                         <tr key={index}>
                         <td>{index+1}</td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.machine_name}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.year}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.model}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.capacity}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.location}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.status}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{new Date(request.post_date).toDateString()}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{new Date(request.timeline).toDateString()}</Link></td>
-                        {/* <td><button className="btn btn-primary btn-block">Delete</button></td> */}
+                        <td><Link to={`/supplier/bid/${request._id}`}>{request.machine_name}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{request.year}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{request.model}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{request.capacity}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{request.location}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{request.status}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{new Date(request.post_date).toDateString()}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{new Date(request.timeline).toDateString()}</Link></td>
                       </tr>
                        )
                     })}

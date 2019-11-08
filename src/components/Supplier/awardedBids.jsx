@@ -3,44 +3,40 @@ import React from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header';
-import ContractorSidebar from './ContractorSideBar'
+import SupplierSideBar from './SupplierSideBar'
 import Footer from '../Footer';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
 
 const API = "http://localhost:4001/api/v1";
 
-export default class Requests extends React.Component {
+export default class AwardedBids extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            requests: []
+            bids: []
         }
     }
-   async componentDidMount() {
-      if (window.localStorage.getItem('token') == null || window.localStorage.getItem('token') == '') {
-        console.log('empt')
+   async componentWillMount() {
+      if (window.localStorage.getItem('token') === null) {
         return <Redirect to="/login"/>
       }
-      else {
-        console.log('o')
-      }
-      await this.getRequests()
+      await this.getBids()
     }
-    async getRequests() {
+    async getBids() {
         const token = window.localStorage.getItem('token');
         try {
-            const requests = await axios.get(`${API}/contractor/allRequests`, {
+            const request = await axios.get(`${API}/supplier/awardBids`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
                 }
             });
-            if (requests.data.status == "success") {
+            if (request.data.status == "success") {
                 this.setState({
-                    requests: requests.data.data.requests,
+                    bidders: request.data.data.bids,
                     loading: false
                 });
             }
@@ -55,12 +51,12 @@ export default class Requests extends React.Component {
     }
 
     render() {
-        const { requests } = this.state;
+        const { bids} = this.state;
         return (
             <div>
                 <Header />
                 <div id="wrapper">
-                <ContractorSidebar />
+                <SupplierSideBar />
                 <div id="content-wrapper">
                <div className="container-fluid">
 
@@ -75,11 +71,10 @@ export default class Requests extends React.Component {
             <div className="card-header">
 
               <i className="fas fa-table"></i>
-                &nbsp; All Requests</div>
+                &nbsp; All Your Awarded Bids</div>
                 
             <div className="card-body">
             <div class="table-responsive">
-           <p> <i className="fas fa-info"></i>&nbsp; You can click on the request to see the bidders</p>
             <Dots animating={this.state.loading}/>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -88,28 +83,22 @@ export default class Requests extends React.Component {
                       <th>Machine name</th>
                       <th>Year</th>
                       <th>Model</th>
-                      <th>Capacity</th>
-                      <th>Location</th>
-                      <th>Status</th>
-                      <th>Post Date</th>
-                      <th>Timeline</th>
-                      {/* <th>Action</th> */}
+                      <th>Posted Date</th>
+                      <th>Bid Date</th>
+                      <th>Bid Price</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {requests.map((request, index) => {
+                    {bids.map((bid, index) => {
                        return (
                         <tr key={index}>
                         <td>{index+1}</td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.machine_name}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.year}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.model}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.capacity}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.location}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{request.status}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{new Date(request.post_date).toDateString()}</Link></td>
-                        <td><Link to={`/contractor/bidders/${request._id}`}>{new Date(request.timeline).toDateString()}</Link></td>
-                        {/* <td><button className="btn btn-primary btn-block">Delete</button></td> */}
+                        <td>{bid.machine_name}</td>
+                        <td>{bid.year}</td>
+                        <td>{bid.model}</td>
+                        <td>{bid.posted_date}</td>
+                        <td>{new Date(bid.bid_date).toDateString()}</td>
+                        <td>{bid.bid_price}</td>
                       </tr>
                        )
                     })}
