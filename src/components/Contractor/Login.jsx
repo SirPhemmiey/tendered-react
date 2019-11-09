@@ -98,7 +98,7 @@ export default class Login extends React.Component {
             );
         }
         else {
-            return type == 'contractor' ? <Redirect to="/contractor/addRequest"/> : <Redirect to="/supplier/live_request" />
+            return type == 'contractor' ? <Redirect to="/contractor/addRequest"/> : <Redirect to="/supplier/liveRequests" />
         }
     }
 }

@@ -39,7 +39,6 @@ export default class Requests extends React.Component {
                     requests: requests.data.data.requests,
                     loading: false
                 });
-                //alert(JSON.stringify(this.state.tickets));
             }
         }
         catch(err) {

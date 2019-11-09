@@ -1,6 +1,7 @@
   
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header';
 import SupplierSidebar from './SupplierSideBar'
@@ -106,8 +107,8 @@ export default class LiveRequests extends React.Component {
                         <td><Link to={`/supplier/bid/${request._id}`}>{request.capacity}</Link></td>
                         <td><Link to={`/supplier/bid/${request._id}`}>{request.location}</Link></td>
                         <td><Link to={`/supplier/bid/${request._id}`}>{request.status}</Link></td>
-                        <td><Link to={`/supplier/bid/${request._id}`}>{new Date(request.post_date).toDateString()}</Link></td>
-                        <td><Link to={`/supplier/bid/${request._id}`}>{new Date(request.timeline).toDateString()}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{moment(request.post_date).format('YYYY-MM-DD HH:mm:ss')}</Link></td>
+                        <td><Link to={`/supplier/bid/${request._id}`}>{moment(request.timeline).format('YYYY-MM-DD HH:mm:ss')}</Link></td>
                       </tr>
                        )
                     })}

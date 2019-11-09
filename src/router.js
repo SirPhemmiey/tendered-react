@@ -14,6 +14,7 @@ import Register from './components/Contractor/Register';
 import LiveRequests from './components/Supplier/liveRequests';
 import AllBids from './components/Supplier/allBids';
 import AwardedBids from './components/Supplier/awardedBids';
+import Bid from './components/Supplier/bid';
 
 
 const Router = () => (
@@ -28,6 +29,7 @@ const Router = () => (
             <Route path="/supplier/liveRequests" component={LiveRequests}/>
             <Route path="/supplier/allBids" component={AllBids}/>
             <Route path="/supplier/awardedBids" component={AwardedBids}/>
+            <Route path="/supplier/bid/:request_id" component={Bid} />
 
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>

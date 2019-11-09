@@ -28,7 +28,7 @@ export default class AwardedBids extends React.Component {
     async getBids() {
         const token = window.localStorage.getItem('token');
         try {
-            const request = await axios.get(`${API}/supplier/awardBids`, {
+            const request = await axios.get(`${API}/supplier/awardedBids`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
