@@ -16,6 +16,7 @@ export default class ContractorSidebar extends React.Component {
     render() {
         return (
           <ul className="sidebar navbar-nav">
+
           <li className="nav-item active">
             <Link to="/contractor/addRequest" className="nav-link">
               <i className="fas fa-fw fa-table"></i>

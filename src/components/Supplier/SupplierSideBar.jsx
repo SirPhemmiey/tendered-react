@@ -16,7 +16,15 @@ export default class SupplierSidebar extends React.Component {
     render() {
         return (
           <ul className="sidebar navbar-nav">
-          <li className="nav-item active">
+
+        <li className="nav-item active">
+            <Link to="/supplier/dashboard" className="nav-link">
+              <i className="fas fa-fw fa-table"></i>
+              <span>Dashboard</span>
+              </Link>
+          </li>
+
+          <li className="nav-item">
             <Link to="/supplier/liveRequests" className="nav-link">
               <i className="fas fa-fw fa-table"></i>
               <span>Live Request</span>
@@ -27,13 +35,6 @@ export default class SupplierSidebar extends React.Component {
             <Link to="/supplier/awardedBids" className="nav-link">
               <i className="fas fa-fw fa-table"></i>
               <span>Awarded Bids</span>
-              </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/supplier/allBids" className="nav-link">
-              <i className="fas fa-fw fa-table"></i>
-              <span>All Bids</span>
               </Link>
           </li>
 

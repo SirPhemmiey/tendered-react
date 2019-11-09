@@ -8,8 +8,9 @@ import SupplierSidebar from './SupplierSideBar'
 import Footer from '../Footer';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
+require('dotenv').config()
 
-const API = "http://localhost:4001/api/v1";
+const API = process.env.REACT_APP_BASEURL
 
 export default class LiveRequests extends React.Component {
 
@@ -22,11 +23,7 @@ export default class LiveRequests extends React.Component {
     }
    async componentDidMount() {
       if (window.localStorage.getItem('token') == null || window.localStorage.getItem('token') == '') {
-        console.log('empt')
         return <Redirect to="/login"/>
-      }
-      else {
-        console.log('o')
       }
       await this.getRequests()
     }

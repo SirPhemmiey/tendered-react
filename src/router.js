@@ -12,10 +12,9 @@ import Login from './components/Contractor/Login';
 import Register from './components/Contractor/Register';
 
 import LiveRequests from './components/Supplier/liveRequests';
-import AllBids from './components/Supplier/allBids';
 import AwardedBids from './components/Supplier/awardedBids';
 import Bid from './components/Supplier/bid';
-
+import SupplierDashboard from './components/Supplier/dashboard';
 
 const Router = () => (
     <div>
@@ -26,8 +25,8 @@ const Router = () => (
             <Route path="/contractor/pendingRequests" component={PendingRequests}/>
             <Route path="/contractor/bidders/:request_id" component={Bidders}/>
 
+            <Route path="/supplier/dashboard" component={SupplierDashboard} />
             <Route path="/supplier/liveRequests" component={LiveRequests}/>
-            <Route path="/supplier/allBids" component={AllBids}/>
             <Route path="/supplier/awardedBids" component={AwardedBids}/>
             <Route path="/supplier/bid/:request_id" component={Bid} />
 

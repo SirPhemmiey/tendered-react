@@ -66,7 +66,7 @@ export default class Login extends React.Component {
               <Dots animating={this.state.loading}/>
                 <div className="form-group">
                 <label htmlFor="inputEmail">Username</label>
-                    <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required="required" name="username" onChange={this.handleChange}/>
+                    <input type="text" id="inputEmail" className="form-control" placeholder="Username" required="required" name="username" onChange={this.handleChange}/>
                 </div>
                 <div className="form-group">
                 <label for="inputPassword">Password</label>
@@ -98,7 +98,7 @@ export default class Login extends React.Component {
             );
         }
         else {
-            return type == 'contractor' ? <Redirect to="/contractor/addRequest"/> : <Redirect to="/supplier/liveRequests" />
+            return type == 'contractor' ? <Redirect to="/contractor/addRequest"/> : <Redirect to="/supplier/dashboard" />
         }
     }
 }

@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
 import SupplierSidebar from './SupplierSideBar';
 
-const API = "http://localhost:4001/api/v1";
+require('dotenv').config();
+
+const API = process.env.REACT_APP_BASEURL
 
 export default class Bid extends React.Component {
 

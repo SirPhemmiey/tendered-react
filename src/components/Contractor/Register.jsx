@@ -4,8 +4,9 @@ import axios from 'axios';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
 
-const API = "http://localhost:4001/api/v1";
+require('dotenv').config()
 
+const API = process.env.REACT_APP_BASEURL
 export default class Register extends React.Component {
 
     constructor(props) {

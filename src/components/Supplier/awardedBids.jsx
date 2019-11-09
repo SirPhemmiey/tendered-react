@@ -1,6 +1,7 @@
   
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header';
 import SupplierSideBar from './SupplierSideBar'
@@ -8,7 +9,9 @@ import Footer from '../Footer';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
 
-const API = "http://localhost:4001/api/v1";
+require('dotenv').config()
+
+const API = process.env.REACT_APP_BASEURL
 
 export default class AwardedBids extends React.Component {
 
@@ -36,7 +39,7 @@ export default class AwardedBids extends React.Component {
             });
             if (request.data.status == "success") {
                 this.setState({
-                    bidders: request.data.data.bids,
+                  bids: request.data.data.bids,
                     loading: false
                 });
             }
@@ -51,7 +54,7 @@ export default class AwardedBids extends React.Component {
     }
 
     render() {
-        const { bids} = this.state;
+        const { bids } = this.state;
         return (
             <div>
                 <Header />
@@ -80,12 +83,10 @@ export default class AwardedBids extends React.Component {
                   <thead>
                     <tr>
                       <th>S/N</th>
-                      <th>Machine name</th>
-                      <th>Year</th>
-                      <th>Model</th>
-                      <th>Posted Date</th>
                       <th>Bid Date</th>
                       <th>Bid Price</th>
+                      <th>Won Bid Date</th>
+                 
                     </tr>
                   </thead>
                   <tbody>
@@ -93,12 +94,9 @@ export default class AwardedBids extends React.Component {
                        return (
                         <tr key={index}>
                         <td>{index+1}</td>
-                        <td>{bid.machine_name}</td>
-                        <td>{bid.year}</td>
-                        <td>{bid.model}</td>
-                        <td>{bid.posted_date}</td>
-                        <td>{new Date(bid.bid_date).toDateString()}</td>
-                        <td>{bid.bid_price}</td>
+                        <td>{moment(bid.bid.bid_date).format('YYYY-MM-DD HH:mm:ss')} </td>
+                        <td>{bid.bid.bid_price}</td>
+                       <td>{moment(bid.bid_date).format('YYYY-MM-DD HH:mm:ss')}</td>
                       </tr>
                        )
                     })}
