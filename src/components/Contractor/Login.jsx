@@ -3,7 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/lib/Dots/Dots.css';
-const API = "http://localhost:4001/api/v1";
+
+const API = process.env.REACT_APP_BASEURL
 
 export default class Login extends React.Component {
 
